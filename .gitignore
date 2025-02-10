@@ -1,0 +1,5 @@
+homework1/homework1_env/
+homework2/homework2_env/
+__pycache__/
+.venv/
+.idea/
