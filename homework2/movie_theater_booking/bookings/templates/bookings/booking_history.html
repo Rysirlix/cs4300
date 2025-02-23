@@ -1,0 +1,27 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+
+{% block head %}
+    <style>
+        .booking-list-item {
+            border: 0.5px solid #dddddd;
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}
+
+<h2>Booking History</h2>
+    <ul class="list-group">
+        {% for booking in booking_list%}
+            <li class="booking-list-item">
+                <strong>Movie:</strong> {{ booking.movie.title }} |
+                <strong>Seat:</strong> {{ booking.seat.seat_number }} |
+                <strong>Booking Date:</strong> {{ booking.booking_date }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

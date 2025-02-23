@@ -1,0 +1,36 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+
+{% block head %}
+    <style>
+        .seat-list-item {
+            border: 0.5px solid #dddddd;
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}
+
+<h2>Book Seats</h2>
+
+<ul class="list-group">
+    {% for seat in seat_list %}
+        <li class='seat-list-item'>
+            <strong>Seat: {{ seat.seat_number }}</strong> - 
+            {% if seat.is_booked %}
+                <span class="text">Booked</span>
+            {% else %}
+                <span class='text-primary'>Available</span>
+                <form method="post" action="{% url 'booking_seat' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="seat_id" value="{{ seat.id }}">
+                    <button type="submit" class="btn btn-success">Book Now</button>
+                </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

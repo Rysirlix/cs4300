@@ -1,0 +1,28 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+
+{% block head %}
+    <style>
+        .movie-list-item {
+            border: 0.5px solid #dddddd;
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}
+
+<h2>Movies</h2>
+    <ul class="list-group">
+        {% for movie in movie_list %}
+            <li class="movie-list-item">
+                <h5>{{ movie.title }}</h5>
+                <strong>Description:</strong> {{ movie.description }} <br>
+                <strong>Release Date:</strong> {{ movie.release_date }} <br>
+                <strong>Duration:</strong> {{ movie.duration }} minutes <br>
+                <a href="{% url 'seat_booking' %}" class="btn btn-success mt-3">Book Now</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
